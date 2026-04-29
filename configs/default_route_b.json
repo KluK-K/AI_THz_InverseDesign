@@ -1,0 +1,38 @@
+{
+  "project": "routeB_binary_ai_lpf",
+  "target": {
+    "cutoff_thz": 0.8,
+    "passband_thz": [0.08, 0.70],
+    "transition_thz": [0.75, 0.90],
+    "stopband_thz": [1.00, 1.90],
+    "max_passband_loss_db": 1.0,
+    "min_stopband_rejection_db": 24.0,
+    "max_passband_reflection_db": -10.0
+  },
+  "geometry_um": {
+    "grid": 0.5,
+    "design_length": 300.0,
+    "load_depth_each_side": 60.0,
+    "au_width": 3.0,
+    "gap": 3.0,
+    "au_thickness": 0.275,
+    "left_feed_length": 260.0,
+    "right_feed_length": 260.0,
+    "substrate": "sapphire"
+  },
+  "constraints": {
+    "center_gap_always_empty": true,
+    "cps_rails_always_connected": true,
+    "added_metal_outer_only": true,
+    "mirror_top_bottom": true,
+    "minimum_feature_um": 0.5
+  },
+  "optimizer": {
+    "primary": "GA_BPSO_DBS",
+    "population": 64,
+    "generations": 120,
+    "dbs_polish_iterations": 5000,
+    "random_seed": 41
+  }
+}
+

@@ -1,0 +1,549 @@
+Article https://doi.org/10.1038/s41467-025-62557-5
+On-chip, inverse-designed active wavelength
+division multiplexer at THz frequencies
+Valerio Digiorgio ,U r b a nS e n i c a, Paolo Micheletti, Mattias Beck ,
+Jérôme Faist & Giacomo Scalari
+The development of photonic integrated components for the terahertz region
+h a sb e c o m ea na c t i v ea n dg r o w i n gr e s e a r c hﬁeld. Despite the numerous
+applications in this spectral range, hardware design still faces several chal-
+lenges. We demonstrate an on-chip, active wavelength division multiplexer
+(WDM) operating at THz frequencies (>1 THz). The WDM architecture is based
+on an inverse design topology optimization applied to an active quantum
+cascade heterostructure embedded ina double metal cavity and planarized
+with a polymer. Such an approach enables the fabrication of a strongly sub-
+wavelength device, with a normalized volume ofV/λ
+3 ≃ 0.5. The WDM input is
+c o u p l e dt oa ni n t e g r a t e dT H zq u a n t u mcascade laser (QCL) frequency comb,
+providing three 330 GHz broadband output ports, ranging from 2.2 THz–3.2
+THz, with a maximum crosstalk of -6 dB. The three ports are outcoupled via
+integrated broadband patch array antennas enabling surface emission. Such a
+device can also operate as a stand-alone element, unlocking advanced on-chip
+signal processing in the THz range.
+Wavelength division multiplexing and demultiplexing are essential
+functions in optics and electronics, allowing parallel communication
+and processing of complex signals
+1,2.I nt h e ﬁeld of integrated photo-
+nics, the development of advanced optical design techniques has
+allowed for unprecedented integration of several components into
+multi-functional photonic chips for telecommunications
+3,4 as well as
+for fundamental science 5–8. The THz region of the electromagnetic
+spectrum has recently seen a rapid evolution thanks to the advent of
+advanced and efﬁcient sources
+9–13, frequency combs14,15,a n dt h eb i r t h
+of THz photonic integrated circuits 16 that are being developed on
+different platforms17–19, including THz QCLs. In the sub-THz region
+(f < 500 GHz), a number of devices wereﬁrst realized without on-chip
+capabilities20,21. Later, on-chip devices on silicon platforms were
+proposed22 and experimentally realized, using arrayed waveguide
+gratings23 and advanced topological photonics concepts24.I nt h ep r e -
+sent work, we target the THz ( f > 1.5 THz) spectral region, where no
+devices have been demonstrated for the time being. For these higher
+frequencies, the use of a dielectric slab for vertical radiation conﬁne-
+ment would lead to unpractical thicknesses of 20 μmo rl e s s ;w e
+propose then a different planar technology more adapted to the tar-
+geted wavelength range.
+We recently developed an integrated active THz photonic
+platform
+25 based on planarized metallic waveguides, featuring an
+embedded quantum cascade gain medium capable of generating
+octave-spanning lasers
+26, broadband frequency combs operating both
+in the AM and FM regimes27, and also acting as an ultrafast detector28.
+As well described in ref. 29, substrateless all-silicon micro-
+structures represent an extremely promising platform for (sub-)THz
+photonics component integration. In this respect, our III-V metal-
+polymer-metal surely presents much less appealingﬁgures in terms of
+propagation losses in passive waveguides and integrability; on the
+other side, the possibility to realize at will gain-endowed elements
+operating very efﬁciently from microwaves (10 GHz) to THz ( > 1.5 THz)
+yields great advantages for signal generation and manipulation. We
+believe that the two platforms are indeed complementary, since in any
+case THz and sub-THz generation happens mainly through III-V ele-
+ments. The signal generation platform can be then efﬁciently coupled
+to silicon-based passive structures exploiting the planar geometry, or
+Received: 6 February 2025
+Accepted: 22 July 2025
+Check for updates
+Institute for Quantum Electronics, ETH Zürich, Zürich, Switzerland. e-mail: vdigiorgio@phys.ethz.ch; gscalari@ethz.ch
+Nature Communications|         (2025) 16:7711 1
+1234567890():,;
+1234567890():,;
+eventually integrated antennas. Our platform allows ultra-broadband
+operation due to the double metal waveguide geometry 30,31 that pre-
+sents no cutoff frequency for the fundamental TM 00 mode; TM
+polarization, with the electricﬁeld perpendicular to the plane of the III-
+V crystal, is the one that couples to the intersubband transitions of the
+quantum cascade structures 32. A wavelength division multiplexer
+(WDM) is an essential component to fully exploit the highly coherent
+comb sources
+27,33, allowing signal manipulation and routing directly
+on-chip. The layout of our planarized platform comprising parallel
+plate metallic waveguides provides a strong refractive index contrast
+between the metal-semiconductor metal active region (n
+MsM ≈ 3.6),
+and the passive, planarizing material, the benzocyclobutene (BCB)
+polymer (n
+BCB ≈ 1.6). Although not strictly required, this is bene ﬁcial
+for the exploitation of inverse design techniques 34 for designing
+compact high-performance devices, translating the pioneering work of
+Piggott35 to 100 times longer wavelengths. A remarkable point of dif-
+ference with what is already demonstrated in the near-IR is the fact that
+our WDM is an active device with gain, allowing us to compensate for
+propagation losses of the metal-insulator-metal waveguide that can be
+severe at these wavelengths ( ≈ 40 dB/cm
+25), as well as providing a
+useful knob for ﬁne-tuning the device characteristics by introducing,
+for example, a supplementary modulation that can be exploited in
+laser stabilization schemes and, if implemented at RF frequencies, for
+spectral broadening.
+Results
+Inverse design and fabrication
+The planarized platform we employ is particularly well suited for
+inverse design applications as the refractive index contrast between
+the dry-etched, high aspect-ratio active structures and the passive
+material sandwiched between two metals (see inset Fig.1) allows for a
+relatively simple parametrization of the devices, requiring only two
+discrete values for the material refractive index. The topology-
+optimized
+36,37 device design presented in this work has been
+obtained with SPINS38, an inverse design software for running gradient-
+based optimization with the adjoint method34,39. The design problem
+requires a parametrization of the spatial material permittivity dis-
+tribution ϵ(p), a sequence of forward and adjoint electromagnetic
+simulations, and an objective functionfobj,i . e . ,t h eﬁgure of merit used
+to evaluate the performance of a given intermediate design. At each
+step of the optimization problem, the objective function and its gra-
+dient are evaluated, iteratively updating the topology until converging
+at the optimal design.
+In particular, we use SPINS to design a THz WDM with a
+200 μm×2 0 0 μmc o m p a c tf o o t p r i n ta n d4 0μmw i d ei n p u ta n do u t p u t
+waveguides, routing frequencies in the 2.2 THz—3.2 THz range to three
+broadband output ports. Figure1a shows the simulation region setup.
+The light gray square represents the design region where the permit-
+tivity is allowed to change, while the dark gray rectangles indicate the
+input and output waveguides.
+The refractive index of GaAs (n
+GaAs ≈ 3.6, dispersive) and BCB
+(nBCB = 1.57, constant), a low-loss (3 cm−1 =1 3 d B / c m ) p o l y m e r c o m -
+monly employed in optoelectronics for planarization, are the upper
+and lower bounds set for the discrete parametrization of the permit-
+tivity distribution. Due to the symmetric planarized waveguide struc-
+ture with metallic con ﬁnement, the propagating optical waves have
+virtually no dependence along the vertical axis, meaning that only a 2D
+slice of the structure and an in-plane propagation simulation are
+required, resulting in a low computational load and a very ef ﬁcient
+optimization routine. We deﬁned a broadband objective function as
+the sum of one sub-objective per optimization frequency ( ω
+i), max-
+imizing the transmission to the desired port. Rejection of unwanted
+frequencies is not explicitly included in theﬁgure of merit. Therefore,
+the objective function adopted for the presented optimization can be
+written as
+f
+objð pÞ =
+X
+j
+1 /C0 ∣ξy
+i, j Ej ðpÞ∣
+2/C16/C17
+, ð1Þ
+where Ej(p) is the electric ﬁeld at frequency ω j simulated with the
+parametrized permittivity distribution ϵ(p) and the quantity ðξy
+i, j Ej Þ
+represents the overlap integral used to evaluate the coupling efﬁciency
+to the desired output mode ξj at port i.
+The source injects the fundamental TM 00 mode at the input
+waveguide. The transmitted power is computed as the squared overlap
+integral of the simulated electric ﬁeld with the TM
+00 mode at the
+output waveguides.
+Figure 1 shows the optimized design obtained after 105 iterations
+and the simulated power ﬂow through the structure at the central
+frequency of each port.
+Fig. 1 | Inverse design optimization. aIllustration of the inverse design problem from the deﬁnition of the design space to theﬁnal optimized design.b Simulation of the
+power ﬂow computed with SPINS at the central frequencies of each port.
+Article https://doi.org/10.1038/s41467-025-62557-5
+Nature Communications|         (2025) 16:7711 2
+The devices were fabricated following the standard procedure
+described in ref. 25: we employed a broadband active region, similar
+to the one reported in ref. 40. This active region features a very
+broad spectral coverage (2.35–4.00 THz25) as well as a low threshold
+current density, making it extremely suited as a source for testing the
+operation of our broadband, three-port WDM. Images of the device
+through different stages of fabrication are reported in Fig. 2, toge-
+ther with an illustration of the full structure. The lasing cavity con-
+nects to the central body of the WDM via a short passive waveguide
+shaped as an adiabatic tapered transition for minimizing re ﬂections.
+While providing efﬁcient optical coupling, it also allows the electrical
+separation of the two active sections thanks to a lithographically
+deﬁned V-shaped gap in the top metallization. The three ports are
+outcoupled through spatially separated surface-emitting broadband
+patch array antennas providing excellent beam properties (both an
+efﬁcient extraction and a well-de ﬁned direction) to couple the
+laser to a user-de ﬁned external device or detector. As presented in
+more detail in refs. 41,42, the emission mechanism is based on an
+array of metallic patch elements oscillating in phase (similar to a
+dipole emitter array), resulting in a narrow single-lobed beam in the
+vertical direction. The emitted radiation exhibits a near-linear
+elliptical polarization along the direction of the feeding lines
+connecting the patches. Further optimization of the antennas
+would eventually enable a polarization selection of the output
+(together with the WDM spectral one), enable external cavity
+conﬁgurations
+43,44, or even employ inverse design on the antenna
+shape for custom emission properties, such as optical vortex
+beams
+45. A broadband time-domain 3D numerical simulation of the
+entire device structure, comprising QCL and WDM sections (without
+outcoupling antennas) was performed with CST Studio Suite to
+predict the performance of the system (see Fig. 2d). The results of
+this simulation do not include the frequency-dependent antenna
+response and re ﬂectivity.
+Measurements
+First, we test the emission of the device by collecting the signal from
+the ensemble of the three antennas together and comparing it with the
+signal emitted from the device’s rear cleaved facet, where there is no
+spectrally selective element (see Fig. 3). The rear facet spectrum is
+much broader, covering the 2.65–4.00 THz bandwidth, with an FSR of
+15.65 GHz matching the cavity length (2.5 mm) of the QCL section. The
+output of the three antennas instead covers the bandwidth
+2.65–3.30 THz, as expected from the optimization and simulation with
+QCL section
+Electrical gap
+WDM section
+WDM bias
+Antenna
+BCB polymer
+100 um
+200 um
+a)
+b)
+c)
+d)
+Fig. 2 | Device scheme and simulation. a Illustration of the planarized device
+structure with the active material surrounded by BCB. The device combines two
+sections: a 2.5 mm long lasing cavity and an electrically separated WDM section
+with surface-emitting broadband patch array antennas.b SEM image of the dry-
+etched WDM inverse-designed region before planarization.c Optical microscope
+image of a fully fabricated device. d 3D CST numerical simulation results for the
+transmission of the QCL section output to the WDM output ports.
+Intensity (arb. units, 10 dB/division)
+Fig. 3 | Spectral measurements of the QCL and WDM outputs. Comparison
+between the spectra measured at the same operating point from the back facet of
+the QCL (top curve) and collectively from the three antennas of the WDM section.
+The curves have a vertical offset for clarity. The laser is operated at 20 K and biased
+at 9.4 V in continuous-wave mode.
+Article https://doi.org/10.1038/s41467-025-62557-5
+Nature Communications|         (2025) 16:7711 3
+SPINS. Unfortunately, the measured emission spectrum is slightly blue-
+shifted with respect to the intentionally designed active region band-
+width, as it does not extend to lower frequencies (below 2.6 THz) that
+would be routed into port 4. As a consequence, we expect only some
+low-intensity, unﬁltered broadband emission from port 4.
+In order to evaluate the performance of the WDM experimentally,
+as p a t i a lﬁlter (a 1 mm diameter hole within a 10 × 10 mm metallic plate
+frame) is positioned inside the cryostat in front of each antenna by
+means of a piezoelectric controller, allowing the collection of the sig-
+nal from the individual ports. A detailed description and pictures of the
+measurement setup can be found in the Supplementary Material. The
+results of the measurements normalized to the maximum emission per
+port are reported in Fig.4. The output of ports 2 and 3 follow with good
+agreement the prediction, displaying a maximum crosstalk of -6 dB.
+Port 4, centered at 2.37 THz, shows an attenuated signal since the laser
+output spectral emission does not cover the targeted bandwidth, as
+visible from Fig. 3.T h i se x p e r i m e n t a lc o nﬁguration also allows us to
+test the amplifying characteristics of the WDM. Being electrically iso-
+lated from the laser, the WDM can be biased independently and act as
+an ampliﬁer for the emitted radiation in each channel. We report in
+Fig. 5a the integrated emitted power per port: it is clearly visible that
+the ampliﬁcation shows a threshold at 6 V and reaches its maximum
+(saturates) for an applied bias of 9 V, in very good agreement with what
+was observed on the LIV curve of the laser (Fig.5b), where the rollover
+point is reached at the same bias. The maximum ampliﬁcation, with a
+factor of almost 3.5-times (5.4 dB), is achieved for port 2. This is an
+indication of the higher gain of the active region (biased at 9 V) at the
+frequencies transmitted to port 2, conﬁrmed by the higher integrated
+D E
+Intensity (arb. units, linear scale)
+Fig. 4 | Comparison between experimental and simulated transmission.
+a Spectral output collected individually from each port. The red stars correspond to
+the measured points in (b). The spectra are offset in the vertical direction for clarity
+without rescaling, showing the actual strength of the detected signal.b Normalized
+experimental spectral output for the three WDM ports together with the corre-
+sponding prediction from the CST 3D simulation. The measurements were done at
+20 K, while the laser was operated in continuous-wave at 9.4 V and the WDM section
+was biased at 8.5 V.
+QCL L-V curve
+a) b)
+Power (arb. units)
+Power (arb. units)
+Fig. 5 | Electrical transport and power measurements. a Spectrally integrated
+emission signal (stars) for each port as a function of the WDM applied bias. The QCL
+output power (dashed line) as a function of the QCL applied bias is shown for
+comparison of the threshold and peak output power voltages with the values for
+the threshold and maximum ampliﬁcation of the WDM. The resemblance is clear, as
+the two sections are made of the same active material, featuring the same gain.b L-
+I-V curve of the laser while driven at 20 K in the micro-pulse (500 kHz, 5% duty
+cycle), macro-pulse mode (30 Hz, 50% duty cycle), with the WDM unbiased.
+Article https://doi.org/10.1038/s41467-025-62557-5
+Nature Communications|         (2025) 16:7711 4
+spectral output power of this port (see Fig. 4), followed by port 3 and
+ﬁnally port 4.
+Additionally, we investigate the coherence of the laser emission
+over the frequency range where the spectral bandwidths of the laser
+and of the WDM overlap. While operating the QCL in free-running
+mode, we observe a single strong RF beatnote over a wide fraction of
+the laser dynamic range (see Fig.6a, b), indication of a frequency comb
+operation
+26. The measurements show some instability arising in a
+narrow voltage interval below 8 V when the WDM is operated in its
+ampliﬁcation regime. Nevertheless, the QCL is overall unaffected by
+the demultiplexer section, which suggests that the latter introduces
+weak feedback in the laser cavity. In order to fully characterize the
+coherence properties of the emission, we employ a SWIFTS
+14 setup
+described in the Supplementary Material and equipped with a fast
+Schottky detector (f
+max < 30 GHz). We operate the laser under +10 dBm
+RF injection at a frequency of 7.87 GHz, equal to half the cavity
+roundtrip frequency. We observe coherent comb operation over a
+bandwidth of ≃ 250 GHz withf
+rep =2 finj = 15.65 GHz, covering channels
+2a n d3 .A ss h o w ni nF i g .6d, the time reconstruction of the QCL output
+after the WDM splitting appears as an oscillating periodic signal. This
+waveform is a consequence of the mixed AM and FM nature of the
+frequency comb, as suggested by the reconstructed intermodal phase
+difference.
+We investigated as well the stability of the comb operation with
+respect to the WDM bias. We report the electrical beatnote signal as a
+function of the applied bias to the laser section for two different WDM
+biases V
+WDM = 3.0 V (see Fig. 6a) corresponding to a lossy regime and
+VWDM = 8.0 V (see Fig. 6b), corresponding to the ampliﬁcation regime.
+The beatnote map has some minor changes but the majority of the
+comb regime is preserved for any bias of the WDM section (see Sup-
+plementary Material for more measurements). This demonstrates the
+very good optical isolation between the two sections, allowing a
+reﬁned control on the performance of the device when operating as a
+frequency comb.
+Discussion
+Leveraging the advanced inverse design techniques developed at tel-
+ecom wavelengths and adapting them to the ultra-broadband planar-
+ized waveguide platform for THz and microwave photonics, we
+demonstrate an active, three-channel WDM integrated on-chip with a
+THz QCL comb. In this ﬁrst demonstration, such a device allows the
+extraction of 200 GHz-wide channels with reasonably low cross-talk
+below -6 dB. The extracted laser modes are phase-coherent, as proved
+by SWIFTS measurements, and robust against WDM bias point. This
+new class of devices paves the way for many applications, such as
+integrated THz signal processing, broadband THz spectroscopy, and
+coherent THz telecommunications, as recently demonstrated at tele-
+com frequencies
+46,47 using frequency combs. The key highlight of the
+inverse design approach is the possibility of easily optimizing for dif-
+ferent material platforms. Additionally, the planarized double metal
+conﬁguration could allow for versatile integration with various devi-
+ces, by using antennas and facilitating signal transfer for next-
+generation integrated photonic systems.
+Methods
+Device fabrication
+The laser chips were fabricated from MBE-grown wafers of the active
+material, consisting of a strongly di agonal, low-threshold broadband
+GaAs/AlGaAs heterostructure. The fabication process starts with the
+evaporation of a metallic stack on the sample and on a n+ GaAs sub-
+strate. The two are bonded via thermocompression wafer bonding. The
+active region is exposed after polishing and wet-etching. Then, a dry-
+etching step is needed to deﬁne the active waveguides. Planarization of
+the sample with BCB polymer follows and ﬁnally the deﬁnition of the
+electrical contacts is done toﬁnish the fabrication process. More details
+on the fabrication are discussedin the Supplementary Material.
+Experimental methods
+The laser was operated at 20 K in continuous-wave mode, using a
+Keithley 2420 source, or in pulsed mode with an Agilent 8114A pulse
+generator. Additional microwave modulation was supplied using a
+Rohde&Schwarz SMB 100A microwave signal generator in combina-
+tion with a Mini-Circuits ZVE-3W-183+ microwave ampliﬁer. The laser
+emission spectra were obtained using a Bruker Vertex 80v, a Fourier
+transform infrared spectrometer (FTIR) with a room-temperature
+deuterated triglycine sulfate (DTGS) detector. A home-built FTIR
+spectrometer with a room-temperature DTGS detector in combination
+with amicrocamera was employed for the measurements of theﬁltered
+emission of the isolated WDM output channels. SWIFT spectroscopy
+measurements were carried out with a Schottky diode working as a fast
+Fig. 6 | Electrical beatnote and shifted wave interference Fourier transform
+spectroscopy (SWIFTS) measurements. a, b Electrical measurements of the beat-
+note of the QCL obtained at 20 K, sweeping the voltage of the laser in the two different
+operating regimes of the WDM:a without ampliﬁcation, biased at 3 V;b with ampli-
+ﬁcation, biased at 8 V.c Experimental SWIFT spectroscopy measurement. The laser is
+operated at 7.9 V (105 mA), at 20 K. The spectral product and the SWIFT spectrum
+overlap where the signal of the Schottky is above the noiseﬂoor. The intermodal
+phase differences are displayed on top for this spectral region.d The reconstructed
+temporal intensity proﬁl e( b l u ea r e a )a n dt h eo n ec o r r e s p o n d i n gt ot h es a m es p e c -
+trum with Fourier-limited pulses (dashed black line) are compared.
+Article https://doi.org/10.1038/s41467-025-62557-5
+Nature Communications|         (2025) 16:7711 5
+detector at room temperature. The beatnote signal was collected at
+the FTIR output and fed into a Rohde&Schwarz FSW67 RF spectrum
+analyzer with an IQ demodulator function. More details can be found
+in the Supplementary Material.
+Data availability
+The data that support the ﬁndings of this study are available from the
+corresponding authors upon request.
+References
+1. Stern, B. et al. On-chip mode-division multiplexing switch. Optica2,
+530–535 (2015).
+2. Dong, P. Silicon photonic integrated circuits for wavelength-
+division multiplexing applications.IEEE J. Sel. Top. Quantum Elec-
+tron. 22,3 7 0–378 (2016).
+3. Yamada, K. et al. High-perform ance silicon photonics technology
+for telecommunications applications.Sci. Technol. Adv. Mater. 15,
+024603 (2014).
+4. Shekhar, S. et al. Roadmapping the next generation of silicon
+photonics.Nat. Commun. 15, 751 (2024).
+5. Kim, J.-H. et al. Hybrid integration methods for on-chip quantum
+photonics.Optica 7,2 9 1–308 (2020).
+6. Metcalf, B. J. et al. Quantum te leportation on a photonic chip.Nat.
+Photon. 8,7 7 0–774 (2014).
+7. Mahmudlu, H. et al. Fully on-chip photonic turnkey quantum source
+for entangled qubit/qudit state generation.Nat. Photon. 17,5 1 8 +
+(2023).
+8. Griesmar, J. et al. Superconducting on-chip spectrometer for
+mesoscopic quantum systems.P h y s .R e v .R e s .3,0 4 3 0 7 8( 2 0 2 1 ) .
+9. Lewis, R. A. A review of terahertz sources. J. Phys. D: Appl. Phys.47,
+374001 (2014).
+10. Ding, Y. J. Progress in terahertz sources based on difference-
+frequency generation.J. Opt. Soc. Am. B 31,2 6 9 6–2711 (2014).
+11. Bosco, L. et al. Thermoelectri cally cooled THz quantum cascade
+laser operating up to 210 K. Appl. Phys. Lett. 115, 010601 (2019).
+12. Khalatpour, A. et al. High-power portable terahertz laser systems.
+Nat. Photon. 15,1 6–20 (2021).
+13. Khalatpour, A. et al. Enhanced operating temperature in terahertz
+quantum cascade lasers based on direct phonon depopulation.
+Appl. Phys. Lett. 122, 161101 (2023).
+14. Burghoff, D. et al. Terahertz laser frequency combs. Nat. Photon.8,
+462–467 (2014).
+15. Rösch, M. et al. On-chip, self-detected terahertz dual-comb source.
+Appl. Phys. Lett. 108,1 7( 2 0 1 6 ) .
+1 6 . S e n g u p t a ,K . ,N a g a t s u m a ,T .&M i t t l e m a n ,D .M .T e r a h e r t zi n t e -
+grated electronic and hybrid electronic-photonic systems.Nat.
+Electron. 1,6 2 2–635 (2018).
+17. Xie, J. et al. A review on terahertz technologies accelerated by
+silicon photonics.Nanomaterials11, 1646 (2021).
+18. Rajabali, S. & Benea-Chelmus, I.-C. Present and future of terahertz
+integrated photonic devices.APL Photon. 8, 080901 (2023).
+19. Yang, Y. et al. Terahertz topological photonics for on-chip com-
+munication.Nat. Photon. 14, 446+ (2020).
+20. Karl, N. J. et al. Frequency-division multiplexing in the terahertz
+range using a leaky-wave antenna.Nat. Photon. 9,7 1 7 ( 2 0 1 5 ) .
+21. Ma, J. et al. Frequency-division multiplexer and demultiplexer for
+terahertz wireless links.Nat. Commun. 8,7 2 9( 2 0 1 7 ) .
+22. Zhu, G. et al. Reverse design of on-chip terahertz demultiplexers.
+Micromachines12, 1093 (2021).
+23. Headland, D. et al. Gratingless integrated tunneling multiplexer for
+terahertz waves.Optica 8,6 2 1–629 (2021).
+24. Gupta, M. et al. 150 Gbps THz chipscale topological photonic
+diplexer. Adv. Mater. 36, 2309497 (2024).
+25. Senica, U. et al. Planarized THz quantum cascade lasers for
+broadband coherent photonics.Light Sci. Appl. 11, 347 (2022).
+26. Rösch, M. et al. Octave-spanning semiconductor laser.Nat. Photon.
+9,4 2–47 (2015).
+27. Senica, U. et al. Frequency-modulated combs via ﬁeld-enhancing
+tapered waveguides.Laser Photon. Rev. 17, 2300472 (2023).
+28. Micheletti, P. et al. Regenerative terahertz quantum detectors. APL
+Photon. 6, 106102 (2021).
+29. Headland, D. et al. Terahertz integration platforms using sub-
+strateless all-silicon microstructures.APL Photon. 8,0 9 1 1 0 1( 2 0 2 3 ) .
+30. Williams, B. S., Kumar, S., Callebaut, H., Hu, Q. & Reno, J. L. Ter-
+ahertz quantum-cascade laser atλ ≈ 100μ m using metal waveguide
+for mode conﬁnement. Appl. Phys. Lett. 83,2 1 2 4–2126 (2003).
+31. Unterrainer, K. et al. Quantum cascade lasers with double metal-
+semiconductor waveguide resonators.Appl. Phys. Lett. 80,
+3060–3062 (2002).
+32. Faist, J. et al. Quantum Cascade Lasers.( O x f o r dU n i v e r s i t y
+Press, 2013).
+33. Micheletti, P. et al. Terahertz optical solitons from dispersion-
+compensated antenna-coupled planarized ring quantum cascade
+lasers. Sci. Adv. 9,e a d f 9 4 2 6( 2 0 2 3 ) .
+34. Molesky, S. et al. Inverse design in nanophotonics. Nat. Photon. 12,
+659–670 (2018).
+35. Piggott, A. Y. et al. Inverse design and demonstration of a compact
+and broadband on-chip wavelength demultiplexer.Nat. Photon. 9,
+374–377 (2015).
+36. Jensen, J. S. & Sigmund, O. Topology optimization for nano-
+photonics.Laser Photon. Rev. 5,3 0 8–321 (2011).
+37. Christiansen, R. E. & Sigmund, O. Inverse design in photonics by
+topology optimization: tutorial.J. Opt. Soc. Am. B 38,4 9 6–509
+(2021).
+38. Su, L. et al. Nanophotonic inverse design with SPINS: software
+architecture and practical considerations.Appl. Phys. Rev. 7,
+011407 (2020).
+39. Lalau-Keraly, C. M. et al. Adjoi nt shape optimization applied to
+electromagnetic design.Opt. Express 21, 21693–21701 (2013).
+40. Forrer, A. et al. Photon-driven broadband emission and frequency
+comb RF injection locking in THz quantum cascade lasers.ACS
+Photon. 7,7 8 4–791 (2020).
+41. Bosco, L. et al. A patch-array antenna single-mode low electrical
+dissipation continuous wave terahertz quantum cascade laser.
+Appl. Phys. Lett. 109, 201103 (2016).
+42. Senica, U. et al. Broadband surface-emitting THz laser frequency
+combs with inverse-designed integrated reﬂectors. APL Photon. 8,
+096101 (2023).
+43. Hugi, A., Maulini, R. & Faist, J. External cavity quantum cascade
+laser. Semicond. Sci. Technol.25,0 8 3 0 0 1( 2 0 1 0 ) .
+44. Wysocki, G. et al. Widely tunable mode-hop free external cavity
+quantum cascade laser for high resolution spectroscopic applica-
+tions. Appl. Phys. B 81,7 6 9–777 (2005).
+4 5 . W h i t e ,A .D .e ta l .I n v e r s ed e s i gn of optical vortex beam emitters.
+ACS Photon. 10,8 0 3–807 (2022).
+46. Marin-Palomo, P. et al. Microresonator-based solitons for massively
+parallel coherent optical communications.Nature 546,2 7 4–279
+(2017).
+47. Shu, H. et al. Microcomb-driven silicon photonic systems. Nature
+605,4 5 7–463 (2022).
+Acknowledgements
+Financial support from H2020 European Research Council Consolidator
+Grant (724344) (CHIC), EU project iFLOWS and SNF project 200021-
+212735 are gratefully acknowledged.
+Author contributions
+G.S. conceived the idea. V.D. and U.S. designed the device and per-
+formed inverse design optimization and electromagnetic simulations.
+V.D. and P.M. fabricated the device with support from U.S. M.B. grew the
+Article https://doi.org/10.1038/s41467-025-62557-5
+Nature Communications|         (2025) 16:7711 6
+active region heterostructure. V.D. performed the measurements and
+data analysis. V.D. and G.S. wrote the manuscript with support from U.S.
+G.S. and J.F. supervised the project and acquired funding.
+Competing interests
+The authors declare no competing interests.
+Additional information
+Supplementary informationThe online version contains
+supplementary material available at
+https://doi.org/10.1038/s41467-025-62557-5.
+Correspondenceand requests for materials should be addressed to
+Valerio Digiorgio or Giacomo Scalari.
+Peer review informationNature Communicationsthanks Alexander
+Piggott and the other anonymous reviewer(s) for their contribution to the
+peer review of this work. A peer review ﬁle is available.
+Reprints and permissions informationis available at
+http://www.nature.com/reprints
+Publisher’s note Springer Nature remains neutral with regard to jur-
+isdictional claims in published maps and institutional afﬁliations.
+Open Access This article is licensed under a Creative Commons
+Attribution-NonCommercial-NoDerivatives 4.0 International License,
+which permits any non-commercial use, sharing, distribution and
+reproduction in any medium or format, as long as you give appropriate
+credit to the original author(s) and the source, provide a link to the
+Creative Commons licence, and indicate if you modiﬁed the licensed
+material. You do not have permission under this licence to share adapted
+material derived from this article or parts of it. The images or other third
+party material in this article are included in the article’s Creative
+Commons licence, unless indicatedotherwise in a credit line to the
+material. If material is not included in the article’s Creative Commons
+licence and your intended use is not permitted by statutory regulation or
+exceeds the permitted use, you will need to obtain permission directly
+from the copyright holder. To view a copy of this licence, visit http://
+creativecommons.org/licenses/by-nc-nd/4.0/.
+© The Author(s) 2025
+Article https://doi.org/10.1038/s41467-025-62557-5
+Nature Communications|         (2025) 16:7711 7

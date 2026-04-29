@@ -1,0 +1,686 @@
+arXiv:2506.03372v1  [physics.app-ph]  3 Jun 2025
+IEEE TEMPLATE (PREPRINT) 1
+Genetic Algorithm-Based Inverse Design of Guided Wave Planar
+Terahertz Filters
+Ali Dehghanian 1,2, Student, IEEE, Thomas Darcie 1, Fellow, IEEE and Levi Smith 1,2,∗, Member, IEEE,
+Abstract—We present a genetic algorithm (GA)-based inverse
+design framework for synthesizing high-performance planar
+terahertz (THz) filters integrated with coplanar striplines (CPSs).
+The method efficiently explores high-dimensional design spaces
+to generate filter geometries matching user-defined S-parameter
+magnitude and phase responses, while enforcing structural con-
+nectivity for compatibility with terahertz system-on-chip (TSoC)
+platforms. To accelerate optimization, filter performance is evalu-
+ated using the ABCD matrix method, providing a significant com-
+putational advantage over full-wave simulations. Final validation
+is performed through finite element method (FEM) simulations.
+As a proof of concept, we design band-stop filters with center
+frequencies of 0.6, 0.8, and 1.0 THz, each with a 150 GHz target
+bandwidth, and demonstrate tunable rejection depths within a
+constant physical footprint. Optimization is guided by minimizing
+the root-mean-square error (RMSE) between simulated and
+target S-parameters.
+Index Terms —Terahertz filters, Genetic algorithm (GA), In-
+verse design, Coplanar stripline (CPS), Terahertz System-on-chip
+(TSoC), ABCD matrix method
+I. I NTRODUCTION
+T
+ERAHERTZ (THz) filters are required for next-
+generation THz systems, allowing spectral control by
+selectively transmitting desired frequency bands while sup-
+pressing out-of-band signals. These functionalities are vital
+for a range of applications, including high-speed wireless com-
+munications, non-invasive medical imaging, and spectroscopic
+sensing [1]–[6]. The ability to engineer and tailor spectral
+responses with high accuracy directly impacts the efficiency,
+resolution, and functionality of THz devices across scientific,
+medical, and industrial domains.
+Structurally, THz filters can be classified into planar and
+non-planar topologies, each offering specific advantages in
+terms of performance metrics such as insertion loss, band-
+width, and frequency selectivity, as well as fabrication compat-
+ibility and system-level integrability. Waveguide-based filters,
+such as rectangular metallic and parallel plate waveguides, are
+popular for their low insertion loss and effective mode con-
+finement in conventional setups [7], [8]. Planar configurations,
+including coplanar waveguides (CPW) and coplanar striplines
+(CPS), are particularly attractive for on-chip applications due
+to their compatibility with standard photolithography and
+compact on-chip footprint [9]–[11].
+1Department of Electrical and Computer Engineering, University of Victo-
+ria, Victoria, BC, V8P 5C2 Canada
+2Centre for Advanced Materials and Related Technology (CAMTEC),
+University of Victoria, 3800 Finnerty Rd, Victoria, BC, V8P 5C2, Canada.
+∗Corresponding author: levismith@uvic.ca
+This work was supported by a NSERC Discovery Grant.
+Manuscript received May xx, xxxx; revised May xx, xxxx.
+Alternative filter designs, such as photonic crystal fil-
+ters, exploit periodic dielectric structures to induce photonic
+bandgaps, offering precise spectral shaping capabilities [12].
+Metamaterial and metasurface filters, composed of engineered
+sub-wavelength resonant elements, provide enhanced design
+flexibility and enable tailored responses such as narrowband,
+broadband, and multi-band filtering [13], [14]. Resonator-
+based filters, including ring and cavity resonators, are also
+widely used in integrated planar formats due to their high
+quality (Q) factors and small footprint [15], [16].
+Traditionally, the design of THz filters has relied heavily
+on the designer’s expertise and theoretical models rooted
+in microwave and optical engineering. These conventional
+methods typically involve iterative tuning of structural param-
+eters based on analytical frameworks such as transmission
+line theory and coupled-mode theory. While these models
+offer valuable physical insight, they are often limited in
+their applicability to geometrically complex or multi-objective
+structures. Consequently, the design process remains labor-
+intensive and constrained in its ability to efficiently explore
+the vast and high-dimensional design space, increasing the risk
+of overlooking high-performing or unconventional solutions.
+These limitations are particularly evident in the development
+of THz components such as filters, resonators, polarizers, and
+power splitters, where optimal performance often depends on
+intricate geometries and tightly coupled physical effects.
+Here we adopt inverse design that was originally devel-
+oped to optimize nanophotonic and electromagnetic structures
+beyond the capabilities of traditional analytical approaches.
+Early applications in photonic systems demonstrated its ability
+to generate compact, high-performance devices with non-
+intuitive geometries that satisfy specific optical transmission
+or field distribution requirements. In particular, its application
+to photonic integrated circuits (PICs) has facilitated the design
+of densely integrated components that offer enhanced function-
+ality, compact footprints, and improved performance [17]. The
+maturity and success of inverse design in silicon photonics not
+only validate its effectiveness but also highlight its potential for
+addressing analogous challenges in emerging THz integrated
+systems.
+Several recent studies have explored inverse design strate-
+gies for optimizing THz components. Zhang et al. [18] pro-
+posed a genetic algorithm (GA)-based inverse design frame-
+work to optimize dispersion profiles for broadband impedance
+matching. Their dual-metasurface absorber achieved 88% ab-
+sorption from 0.21 to 5 THz, demonstrating both high per-
+formance and computational efficiency. In a follow-up study,
+the same group used GA-assisted optimization to enhance
+THz metasurface design, using multiple objective functions
+IEEE TEMPLATE (PREPRINT) 2
+to improve design reliability and automation [19].
+Beyond GAs, machine learning-based approaches have been
+applied to accelerate and enhance the inverse design process.
+Li et al. [20] used artificial neural networks (ANNs) to
+accurately predict reflection spectra and optimize micro/nano
+THz metasurface structures with custom optical responses.
+Similarly, Mashayekhi et al. [21] developed an ANN-assisted
+inverse-designed graphene-based absorber, achieving 96.33%
+absorption across 0.5–10 THz and enabling rapid parameter
+selection for THz detection. Deep learning has also been
+extended to THz antenna design. Karahan et al. [22] intro-
+duced a deep neural network (DNN)-based inverse design
+approach for multi-band graphene patch antennas operating
+between 2–5 THz. Their model achieved 13 frequency bands,
+up to 8.8 dB gain, full 360° beam steering, and 93% pre-
+diction accuracy, significantly accelerating the design cycle.
+Furthermore, Ding et al. [23] proposed a Finite-Difference
+Time-Domain (FDTD)-based inverse design framework for
+a 3D-printable diffractive optical element (DOE) capable of
+THz spectral splitting between 0.5–0.7 THz. Their simulation
+and experimental results demonstrated a compact, low-cost
+solution for portable THz spectroscopy and communication.
+Although inverse design methodologies have been success-
+fully applied to various THz components, such as metasur-
+faces, absorbers, antennas, and filters, the efficient design of
+planar THz filters integrated with guided-wave transmission
+lines remains largely unexplored. Addressing this gap, we
+present a GA-based inverse design framework specifically
+tailored for planar guided-wave THz on-chip filters. Using evo-
+lutionary optimization strategies, the proposed method enables
+the systematic exploration of complex, high-dimensional de-
+sign spaces and facilitates the realization of high-performance
+THz filters compatible with standard lithographic fabrication
+processes.
+To ensure computational feasibility, filter performance is
+evaluated using the ABCD matrix method, which offers sub-
+stantial acceleration compared to full-wave simulations while
+maintaining sufficient modeling accuracy. The final valida-
+tion of the optimized designs is performed through finite
+element method (FEM) simulations. As a proof-of-concept,
+we demonstrate the inverse design of band-stop filters with
+varying center frequencies and rejection depths, all within a
+fixed device footprint. To the best of our knowledge, this is
+the first application of a GA-based inverse design approach
+that employs the ABCD matrix method for CPS-integrated
+THz filters, highlighting its potential to advance compact,
+fabrication-ready devices in integrated THz systems.
+II. M ETHODS
+Traditional forward design methodologies for THz filters are
+largely rooted in analytical theories derived from microwave
+engineering. Typically, the design of periodic band-stop THz
+filters in planar waveguide structures begins by specifying a
+center frequency and target bandwidth, followed by estimating
+the filter period based on the effective relative permittivity of
+supported modes, usually obtained through full-wave simula-
+tions. The geometric parameters are then derived from this
+model and iteratively fine-tuned through additional simula-
+tions. Although this approach can yield functional designs,
+it inherently depends on simplifying assumptions and limited
+parameter sweeps, which constrain the design space and limit
+opportunities for performance optimization.
+In contrast, inverse design frameworks allow users to define
+a desired spectral response, including both magnitude and
+phase characteristics, and automatically search for optimal
+geometries that meet those specifications. This enables the
+discovery of non-intuitive, high-performance structures that
+would be difficult to realize through conventional methods.
+Moreover, by formulating the design task as an optimization
+problem, inverse design reduces the reliance on trial-and-
+error tuning and provides a direct route to meeting stringent
+spectral requirements, particularly in compact and fabrication-
+constrained THz platforms.
+In this work, we focus on the inverse design of opti-
+mized planar THz filters using a GA-based framework. Sev-
+eral synthesized band-stop filters are presented as proof-of-
+concept demonstrations to validate the proposed optimization
+approach. These filters feature varying center frequencies,
+bandwidths, and rejection depths, showcasing the flexibility
+and capability of the inverse design method. Band-stop filters
+were chosen as the initial test case to allow direct comparison
+with previous forward-designed filters, providing a meaning-
+ful benchmark for evaluating the performance improvements
+achieved through the GA-based inverse design process.
+A. Inverse design with genetic algorithm
+The GA offers several advantages that make it particularly
+suitable for the inverse design of complex electromagnetic
+structures. Unlike gradient-based optimization methods, GA
+does not require computation of gradients of the fitness
+(objective) function. This characteristic makes it more robust
+against local minima, which are common in non-convex high-
+dimensional design spaces [24].
+In this work, we employ a GA to optimize the binary dis-
+tribution of gold (Au) and air pixels within a planar THz filter
+structure. Each candidate solution is encoded as a chromosome
+representing the spatial arrangement of pixels that evolve
+over successive generations through selection, crossover, and
+mutation. The GA parameters are carefully tuned to address
+the discrete, high-dimensional nature of the problem.
+The mutation operator introduces diversity by toggling
+individual bits, corresponding to changing the material as-
+signment of specific pixels. This allows for the exploration
+of novel topologies that can enhance the S-parameter re-
+sponse. Crossover combines favorable traits from two parent
+designs, while elitism ensures that top-performing individu-
+als are preserved. The population size balances exploration
+breadth with computational feasibility, considering the cost of
+simulations [24].
+Several strategies are employed to mitigate the risk of
+convergence to local minima that are common in nonconvex
+optimization landscapes defined by electromagnetic perfor-
+mance metrics. Increasing the mutation rate enhances diversity
+and allows broader sampling of the solution space. When
+IEEE TEMPLATE (PREPRINT) 3
+Start
+Generation G=1
+Initial Population
+Fitness Calculation
+Selection
+Crossover
+Mutation
+Next Population
+G < Gmax
+Generation G=G+1
+Output
+…
+…
+(1) (2) (3)
+(1)
+End
+(3)
+(2)
+Fig. 1. Flowchart of the GA optimization process. The randomly generated initial population of THz filters is depicted, along with their corresponding
+S-parameters (both magnitude and phase). The algorithm iterates through successive generations, refining the population until one of two stopping criteria is
+met: (1) the number of generations G reaches the predefined maximum Gmax, or (2) the error function converges below a specified threshold.
+a locally optimal design is suspected, its genome can be
+reintroduced in subsequent runs to allow refined exploration
+around its neighborhood. Extending the number of generations
+provides additional opportunities for the evolution of high-
+performance filter geometries. Additionally, running the GA
+multiple times with randomized initial populations allows for
+statistical comparison across runs, providing information on
+the robustness of the solutions and the sensitivity of the design
+problem to initial conditions.
+Figure 1 presents the flow diagram of the GA optimization
+process that we used to design THz filters. The process begins
+with a randomly generated initial population of filters, each
+associated with its corresponding S-parameters, including both
+magnitude and phase. As the algorithm progresses, iteratively
+refines the population across successive generations based
+on performance feedback (fitness function). This evolutionary
+process enables the development of optimized THz filters that
+satisfy the specified design criteria.
+We enforce structural continuity for compatibility with our
+THz test platform using a connectivity constraint that is
+incorporated into the design formulation. Specifically, the filter
+must maintain a continuous conductive pathway to facilitate
+voltage biasing of the transmitter photoconductive switch
+(PCS). Without such a constraint, generated structures may
+introduce discontinuities (i.e., a DC block), and the device
+would fail to operate correctly during experimentation. While
+this work does not include experimental validation, the design
+framework is developed with all necessary constraints in place
+to facilitate future experimental implementation.
+With the structural constraints integrated into the initializa-
+tion process, the inverse design problem is formally defined
+and formulated for optimization. Each candidate solution is
+represented as a binary matrix encoding the spatial distribution
+of gold and air pixels within the designated design region.
+The pixel size was set to 4 µm ×10 µm to balance resolution
+requirements, fabrication feasibility, and computational cost.
+This binary representation serves as input to the GA, which
+iteratively evolves the population to maximize the fitness
+function, defined as the figure of merit (FOM), that quantifies
+how closely the simulated electromagnetic response matches
+the S-parameters of the target filter.
+Figure 2 illustrates the design framework and key structural
+IEEE TEMPLATE (PREPRINT) 4
+Fig. 2. Illustration of the design framework and associated parameters. (a) Example of a planar THz filter structure synthesized using a GA-based inverse
+design approach. The overall framework dimensions are 300 µm×2000 µm, corresponding to 200 discrete columns in the propagation direction. (b) Magnified
+view of a section of the filter, highlighting key design parameters: impedance ( Z), conductor width ( W ), and strip spacing ( S). (c) Cross-sectional schematic
+of the filter structure, depicting gold metallic layers patterned on a silicon nitride (Si 3N4) membrane substrate.
+parameters of the planar THz filter investigated in this work.
+The filter region spans an area of 300 µm in width and 2000 µm
+in length, corresponding to 200 discrete columns along the
+propagation direction. This discretized domain serves as the
+optimization space for the GA-based inverse design process,
+wherein the binary configuration of each column defines the
+local characteristic impedance profile of the filter.
+A magnified view of a representative section is shown in
+Fig. 2(b), highlighting essential design parameters, including
+the local characteristic impedance ( Z), conductor width ( W ),
+and strip spacing ( S). These geometrical features collectively
+govern the electromagnetic response of the structure, enabling
+fine-tuning of the filter’s spectral characteristics. In the design
+space explored, W varies between 10 µm and 90 µm, while
+S ranges from 5 µm to 90 µm, ensuring compatibility with
+fabrication constraints and impedance requirements.
+Figure 2(c) presents a cross-sectional schematic of the
+filter, depicting gold metallic layers patterned on a silicon
+nitride (Si 3N4) membrane substrate. This material platform
+ensures compatibility with standard microfabrication processes
+while minimizing substrate losses at THz frequencies. The
+combination of geometrical flexibility and material selection
+facilitates the realization of high-performance THz filters
+within a compact planar footprint.
+After initializing the population, each candidate design
+is evaluated using the fitness function. The fitness function
+quantifies performance by calculating the root-mean-square
+error (RMSE) between the simulated and target scattering
+parameters S-parameters), incorporating both magnitude and
+phase.
+Formally, the fitness function f(xt
+i) : Rn → R maps
+design parameters xt
+i at iteration t to a scalar score reflecting
+spectral deviation. The loss function L = −RMSE guiding
+optimization is expressed as:
+L = w1
+vuut 1
+N
+NX
+i=1
+(SdB
+21(fi) − SdB
+21,target(fi))2
++ w2
+vuut 1
+N
+NX
+i=1
+(SdB
+11(fi) − SdB
+11,target(fi))2
++ w3
+vuut 1
+N
+NX
+i=1
+(∠S11(fi) − ∠S11,target(fi))2
++ w4
+vuut 1
+N
+NX
+i=1
+(∠S21(fi) − ∠S21,target(fi))2
+(1)
+where N is the number of frequency points, and
+w1, w2, w3, w4 are weighting factors for magnitude and phase
+components of transmission ( S21) and reflection ( S11) re-
+sponses. This formulation enables precise, frequency-aware
+tuning of THz filter designs through genetic optimization.
+IEEE TEMPLATE (PREPRINT) 5
+In this work, the target phase response was specified as
+linear; therefore, w3 and w4 were assigned to 10% of the
+total loss function weight. As a result, the optimization process
+initially prioritizes minimizing the magnitude-related compo-
+nents ( w1 and w2) of the loss function, with phase error
+contributing less strongly during early optimization. In the
+later stages, the algorithm fine-tunes the design by evaluating
+the differential phase between adjacent frequency points and
+reducing phase variations through the influence of w3 and w4.
+A population size of 200 was selected to balance ex-
+ploration breadth with computational feasibility. Preliminary
+experiments conducted with population sizes of 50, 100, 200,
+and 400 showed diminishing fitness improvements beyond
+200, while computational time scaled proportionally. Each
+generation evolves through a combination of elitism, selection,
+crossover, and mutation, with the objective of maximizing the
+fitness function.
+To guide the evolutionary process toward optimal solutions,
+an elite group comprising the top 30 individuals (15% of the
+population) with the highest fitness values is directly carried
+over to the next generation. This elite fraction was empirically
+chosen to balance convergence stability and exploration diver-
+sity: higher elite rates ( > 20%) accelerated convergence but
+increased the risk of premature convergence to local optima,
+while lower rates ( < 10%) slowed convergence without yield-
+ing notable diversity gains. The elite individuals are identified
+by simulating all 200 candidates, ranking them by fitness, and
+preserving the top 30.
+The remaining 170 candidates are generated through the ap-
+plication of genetic operators: selection, crossover, and muta-
+tion. To maintain population diversity and promote exploration
+of the design space, a probabilistic rank-based tournament
+selection strategy is employed. In this method, a subset of T
+individuals is randomly sampled from the population, and an
+individual is selected from the tournament with a probability
+that favors higher-ranked individuals. The probability of se-
+lecting an individual i with rank ri (where r = 1 corresponds
+to the highest fitness) is given by:
+P (i) = (1 − s)sri−1
+1 − sT (2)
+where s ∈ (0, 1) is the selection pressure and T is the tourna-
+ment size [25], [26]. This probabilistic approach allows lower-
+ranked individuals to be selected with nonzero probability,
+promoting genetic diversity while still biasing selection toward
+fitter individuals.
+A tournament size of T = 4 was selected based on
+literature recommendations for moderate selection pressure in
+combinatorial GAs [24], [25]. Preliminary tests showed that
+smaller T slowed convergence, while larger T reduced diver-
+sity. This value was empirically validated to achieve consistent
+fitness improvements across runs, balancing exploitation and
+exploration and reducing the risk of premature convergence.
+Crossover is employed as a recombination operator to
+generate new candidate solutions by combining structural
+characteristics from two parent individuals. In the context of
+grid-based THz filter design, a two-point crossover strategy
+is implemented to facilitate the creation of novel geometries
+while preserving connectivity and material constraints (Fig. 3).
+Given two parent grids P1 and P2, two crossover points c1 and
+c2 are randomly selected at uniformly distributed positions
+within the grid such that 2 ≤ c1 < c 2 ≤ C − 1, where
+C represents the total number of columns in the grid. Two
+offspring, O1 and O2, are then generated by exchanging the
+column segments between c1 and c2:
+O1 = [P1(:, 1 : c1), P 2(:, c1 : c2), P 1(:, c2 : C)] (3)
+O2 = [P2(:, 1 : c1), P 1(:, c1 : c2), P 2(:, c2 : C)] (4)
+Here, P (:, a : b) denotes the submatrix containing columns
+a to b. The use of two crossover points allows for greater
+structural variation compared to single-point schemes, while
+maintaining design continuity and compatibility with the CPS
+platform.
+To further enhance diversity, mutation is applied to 10%
+of the selected individuals. During mutation, a randomly
+chosen bit in the binary chromosome is flipped (i.e., “0”
+to “1” or “1” to “0”), corresponding to a material change
+at a specific pixel—effectively toggling it between a gold
+and air region. This stochastic perturbation introduces novel
+traits into the population and supports broader exploration
+of the design space. Importantly, all mutation operations are
+performed while enforcing the continuity constraint, ensuring
+that conductive pathways remain uninterrupted to maintain
+compatibility with the CPS platform in future experiments.
+III. SIMULATION RESULTS AND DISCUSSION
+To compute the S-parameters and subsequently evaluate
+the RMSE, two computational methodologies are available:
+(1) an analytical approach based on the ABCD transmission
+matrix method, and (2) a full-wave numerical analysis per-
+formed using commercial software such as ANSYS HFSS.
+Given the substantial computational cost associated with FEM-
+based simulations, the ABCD transmission matrix method
+was employed as an efficient surrogate modeling approach.
+This method provides a computational speed-up exceeding
+three orders of magnitude compared to full-wave simulations,
+thereby enabling rapid evaluation of design candidates during
+the optimization process while maintaining sufficient accuracy
+for guiding the inverse design. Prior studies have demonstrated
+a strong correlation between the results obtained from this
+analytical approach and experimental measurements, thereby
+validating its accuracy [27].
+The designed filters are composed of cascaded unit cells,
+each modeled as a section of transmission line with a specific
+characteristic impedance. These unit cells are arranged later-
+ally along the column axis of the design grid, with each col-
+umn corresponding to one such unit cell. To accurately model
+the behavior of these structures, each unit cell is represented by
+a two-port ABCD matrix, which characterizes the voltage and
+current relationship at its input and output ports. This modeling
+approach assumes that each section behaves as a uniform
+transmission line, which is a valid approximation under the
+IEEE TEMPLATE (PREPRINT) 6
+Fig. 3. Illustration of the two-point crossover mechanism employed in the GA-based inverse design of THz filters. This crossover process facilitates the
+recombination of structural features from two-parent designs, generating offspring with inherited characteristics that contribute to the optimization of the
+filter’s electromagnetic response.
+quasi-static (QS) regime—where the physical dimensions of
+the unit cells are much smaller than the operating wavelength.
+The ABCD matrix of a transmission line segment of length
+Λ, characteristic impedance Z, and phase constant β is given
+by:
+
+Acell Bcell
+Ccell Dcell
+
+=
+ cos(βΛ) jZ sin(βΛ)
+j 1
+Z sin(βΛ) cos( βΛ)
+
+(5)
+The overall ABCD matrix for a filter composed of N
+cascaded unit cells is obtained by sequentially multiplying the
+individual ABCD matrices corresponding to each unit cell:
+A B
+C D
+
+total
+=
+AC1 BC1
+CC1 DC1
+
+·
+AC2 BC2
+CC2 DC2
+
+· · ·
+ACN BCN
+CCN DCN
+
+(6)
+Each section’s QS characteristic impedance is computed
+analytically based on its lateral geometry, including the con-
+ductor width W and the inner strip spacing S, using the closed-
+form expression for CPS transmission lines [28]:
+ZCPS = 120π√εre
+K(kCPS)
+K(k′
+CPS) , k CPS = S
+S + 2W (7)
+where K(k) and K(k′) are the complete elliptic integrals of
+the first kind, and εre is the effective relative permittivity of
+the substrate.
+Finally, the scattering parameters (S-parameters) are ex-
+tracted from the total ABCD matrix using standard transfor-
+mations [29]:
+S11 =
+A + B
+ZCPS
+− CZCPS − D
+A + B
+ZCPS
++ CZCPS + D , S21 = 2
+A + B
+ZCPS
++ CZCPS + D
+(8)
+This modeling framework enables rapid and reasonably ac-
+curate prediction of the electromagnetic response of cascaded
+THz filters, making it well-suited for evaluating the fitness
+of a large number of candidate structures during the inverse
+design process, particularly in early optimization stages where
+full-wave simulations would be computationally prohibitive.
+Figure 4 summarizes the spectral response and structural
+realization of a planar band-stop filter synthesized using the
+proposed GA-based inverse design framework. The target
+specifications include a center frequency of 0.8 THz and a
+3-dB bandwidth of 200 GHz. In Fig. 4(a), the calculated
+magnitude response of S21 and S11, obtained via the ABCD
+matrix method, is compared against the target response. The
+design meets the specified rejection depth and bandwidth
+with high accuracy. Figure 4(b) presents the corresponding
+phase response, with particular emphasis on the linear phase
+progression of S21 across the passband, which is critical
+for dispersion-sensitive THz applications. A direct compari-
+son between the ABCD matrix-based results and full-wave
+electromagnetic simulations from ANSYS HFSS is provided
+in Fig. 4(c). Strong agreement is observed across most of
+the frequency range, validating the modeling framework.
+However, minor discrepancies emerge at higher frequencies
+(above 0.9 THz), where the ABCD matrix method begins to
+diverge from HFSS simulation. These deviations are primarily
+attributed to radiation losses and edge diffraction effects that
+are not captured by the quasi-static assumptions inherent in the
+ABCD matrix model. Lastly, Fig. 4(d) depicts the unconven-
+tional filter geometry synthesized through the GA optimization
+process, illustrating the method’s ability to generate non-
+intuitive yet high-performance designs within the imposed
+fabrication constraints.
+To further investigate the electromagnetic behavior of the
+optimized filter structure, the electric field distribution was
+analyzed at multiple frequencies spanning the passband and
+stopband. Figure 5(a) shows the simulated in-plane E-field
+profiles at 0.6 THz, 0.8 THz, and 1.0 THz. At 0.6 THz and
+1.0 THz, the field propagates effectively through the structure,
+confirming low insertion loss in the passbands. In contrast, at
+0.8 THz—corresponding to the filter’s stopband—strong field
+attenuation is observed, demonstrating effective suppression
+of transmission and validating the spectral selectivity of the
+inverse-designed filter.
+Figure 5(b) presents the field profile at 1.4 THz on a loga-
+rithmic scale to highlight radiation effects at higher frequen-
+cies. The simulation reveals radiation leakage originating from
+IEEE TEMPLATE (PREPRINT) 7
+(a)
+(b)
+(c)
+(d)
+200GHz
+-3dB
+Fig. 4. (a) Calculated magnitude response of the planar band-stop filter’s S-parameters ( S21 and S11) using the ABCD matrix method, compared against
+the target response. The design specifies a 3-dB bandwidth of 200 GHz and a rejection level of −50 dB, with the computed response achieving a rejection
+depth of approximately −46 dB. (b) Phase response of the calculated S-parameters, emphasizing the linear phase progression of S21 across the passband.
+(c) Comparison between the results predicted by the ABCD matrix method and full-wave electromagnetic simulations using ANSYS HFSS, showing strong
+agreement. (d) Final optimized filter geometry synthesized using the proposed GA-based inverse design framework.
+ƒ = 0.6 THz
+ƒ = 0.8 THz
+ƒ = 1.0 THz
+ƒ = 1.4 THz
+(a)
+(b)
+Fig. 5. (a) Electric field distribution of the inverse-designed planar band-stop filter at 0.6 THz, 0.8 THz, and 1.0 THz. The filter exhibits strong suppression
+in the stopband (0.8 THz) and effective transmission in the passbands (0.6 THz and 1.0 THz), validating its spectral selectivity. (b) Logarithmic-scale field
+profile at 1.4 THz, illustrating radiation losses at higher frequencies due to edge diffraction and imperfect confinement, particularly from the conductor edges.
+the edges of the metallic conductors, attributed to diffraction
+at frequencies beyond the designed stopband.
+Figure 6 illustrates the evolutionary optimization process
+over multiple generations. The initial generation consists of
+randomly generated structures, which are progressively refined
+as the algorithm minimizes the error function. After 120 gen-
+erations, the optimization converges to a design that matches
+the desired band stop filter response, as evidenced by the
+corresponding S-parameters ( S21 and S11 in both magnitude
+and phase).
+To demonstrate the capabilities of the proposed inverse de-
+sign framework, two sets of design objectives were considered
+to systematically evaluate the ability of the framework to
+achieve distinct spectral responses while maintaining a fixed
+physical footprint of 2000 µm in length. In the first set,
+we investigated the system’s ability to control the rejection
+depth without altering the device geometry. Specifically, the
+GA-based inverse design framework was tasked to synthesize
+band-stop filters centered at 0.8 THz with a fixed 3-dB
+bandwidth of 70 GHz, while achieving three distinct rejection
+depths of 10 dB, 20 dB, and 30 dB, respectively. This
+evaluation serves as a critical benchmark of the algorithm’s
+capability to precisely tailor the depth of the stopband response
+by optimizing the internal geometry, despite the fixed device
+dimensions and fabrication constraints. Figure 7(a) presents
+the simulated S-parameters of the designed filters, demonstrat-
+IEEE TEMPLATE (PREPRINT) 8
+ing the system’s flexibility in producing filters with different
+rejection depths. The results confirm that, through appropriate
+geometry optimization guided by the RMSE-based fitness
+function, the framework successfully generates non-intuitive
+filter structures capable of meeting the specified rejection
+levels. Compared to conventional Bragg grating filters of
+similar spectral specifications [11], the GA-based inverse-
+designed filters achieve superior performance (-30 dB rejection
+compare to -18 dB) with approximately 50% reduction in
+device length, underscoring the effectiveness of the proposed
+method for compact THz filter synthesis.
+Generation
+G = 0
+Filter Structure RMSE
+G = 1
+G = 2
+G = 10
+G = 120
+13.46
+13.19
+12.54
+9.20
+5.91
+Fig. 6. (e) Evolutionary optimization process for the inverse-designed
+planar THz band-stop filter. The initial generation begins with a randomly
+selected structure, which is iteratively refined across successive generations.
+The algorithm progressively minimizes the error function until, after 120
+generations, the design converges to the desired target filter configuration,
+demonstrating the efficacy of the proposed inverse design framework.
+In the second set, we explored the framework’s capability to
+achieve center frequency tunability within the same physical
+platform and device length. Band-stop filters with center
+frequencies of 0.6 THz, 0.8 THz, and 1.0 THz, each target-
+ing a 3-dB bandwidth of 150 GHz, were synthesized. This
+evaluation demonstrates the adaptability of the inverse design
+framework to achieve wide frequency tunability by modify-
+ing the target spectral response in the optimization process,
+without requiring changes to the overall device footprint. The
+simulated S-parameters of these filters are shown in Fig. 7(b).
+These findings highlight the ability of the proposed framework
+to design frequency-selective filters with distinct geometries,
+adapted to various operational frequencies, while preserving a
+consistent physical footprint and ensuring compatibility with
+existing fabrication constraints. This underlines the versatility
+of the developed system for creating customized THz filters
+capable of meeting diverse application requirements in inte-
+grated platforms.
+The comparison between the results obtained from the
+ABCD matrix method and full-wave electromagnetic sim-
+ulations is presented in each figure. The two approaches
+exhibit strong agreement with minimal divergence across
+and below the operational bandwidth. Minor discrepancies at
+higher frequencies can be attributed to radiation losses and
+edge diffraction effects, which are not captured by the quasi-
+static assumptions of the ABCD matrix model, as discussed
+previously.
+The integration of the ABCD matrix method into the GA-
+based inverse design framework provided a critical compu-
+tational advantage, enabling rapid and efficient evaluation of
+candidate filter st
