@@ -1,0 +1,13 @@
+{
+  "is_valid": true,
+  "gap_violations": 0,
+  "upper_rail_missing_cells": 0,
+  "lower_rail_missing_cells": 0,
+  "mirror_mismatch_cells": 0,
+  "disconnected_upper_loading_cells": 0,
+  "disconnected_lower_loading_cells": 0,
+  "min_feature_um": 0.5,
+  "notes": [
+    "all stage-2 fabrication checks passed"
+  ]
+}

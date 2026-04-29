@@ -1,0 +1,42 @@
+{
+  "label": "B1_traditional_stepped_bessel_cps",
+  "model": "stage2_abcd_qtem_open_stub",
+  "meaning": "Fast surrogate for ranking binary CPS low-pass candidates before COMSOL.",
+  "metrics": {
+    "f3db_thz": 0.8717618631261742,
+    "pass_avg_s21_db": -0.23498891815313608,
+    "pass_min_s21_db": -0.43229492038303563,
+    "pass_ripple_db": 0.31066006673178526,
+    "pass_avg_s11_db": -20.27237037812001,
+    "edge_avg_s21_db": -5.885591531632752,
+    "stop_avg_s21_db": -12.103018244722987,
+    "stop_max_s21_db": -0.40720382504537567,
+    "stop_coverage_below_10_db": 0.5135135135135135,
+    "stop_coverage_below_20_db": 0.16216216216216217,
+    "recovery_peak_db": -0.40720382504537567,
+    "passband_notch_penalty_db": 0.0,
+    "monotonic_violation_db": 50.51610755806617,
+    "score": -26.69790501711949
+  },
+  "mechanism_diagnostics": {
+    "pass_reflected_power_avg": 0.018971209290485874,
+    "pass_transmitted_power_avg": 0.9474447153280575,
+    "pass_loss_power_avg": 0.03358407538145701,
+    "cutoff_reflected_power_avg": 0.053793266191071505,
+    "cutoff_transmitted_power_avg": 0.885663324409895,
+    "cutoff_loss_power_avg": 0.060543409399033445,
+    "stop_reflected_power_avg": 0.6004604404720757,
+    "stop_transmitted_power_avg": 0.2984611935356013,
+    "stop_loss_power_avg": 0.10107836599232302,
+    "stop_loss_db_avg": -11.13594641079848
+  },
+  "geometry_summary": {
+    "nx": 600,
+    "ny": 258,
+    "grid_um": 0.5,
+    "added_upper_cells": 4321,
+    "rail_cells": 7200,
+    "total_metal_cells": 15842,
+    "estimated_added_area_um2": 2160.5
+  }
+}

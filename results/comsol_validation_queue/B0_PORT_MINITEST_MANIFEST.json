@@ -1,0 +1,27 @@
+{
+  "candidate": "B0_straight_cps",
+  "purpose": "Port-locking mini-test before any full sweep or B1/B2/B3 validation.",
+  "port_strategy": "differential lumped port / terminal pair",
+  "input_plane_x_um": 0.0,
+  "output_plane_x_um": 820.0,
+  "positive_rail_y_um": [1.5, 4.5],
+  "negative_rail_y_um": [-4.5, -1.5],
+  "au_z_um": [0.0, 0.275],
+  "selection_names": ["sel_p1_plus", "sel_p1_minus", "sel_p2_plus", "sel_p2_minus"],
+  "test_frequencies_thz": [0.3, 0.8, 1.2],
+  "required_outputs": [
+    "S11",
+    "S21",
+    "loss = 1 - |S11|^2 - |S21|^2",
+    "E-field magnitude top view",
+    "E-field cross-section through gap",
+    "Au current distribution"
+  ],
+  "pass_criteria": [
+    "field mainly confined around CPS gap",
+    "no artificial B0 cutoff near 0.8 THz",
+    "S11 not near 0 dB across all frequencies",
+    "two Au rails show differential/anti-phase current"
+  ],
+  "status": "port_coordinate_selections_defined_lumped_port_physics_pending"
+}

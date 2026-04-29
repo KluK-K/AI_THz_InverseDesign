@@ -1,0 +1,18 @@
+{
+  "summary": {
+    "nx": 600,
+    "ny": 258,
+    "grid_um": 0.5,
+    "added_upper_cells": 2036,
+    "rail_cells": 7200,
+    "total_metal_cells": 11272,
+    "estimated_added_area_um2": 1018.0
+  },
+  "proxy_metrics": {
+    "proxy_score": 1.6739883574283871,
+    "metal_fill_upper": 0.028277777777777777,
+    "chirp_score": 0.05579134872057874,
+    "slow_wave_score": 0.8090985043539042,
+    "p90_active_stub_depth_um": 36.0
+  }
+}

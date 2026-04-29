@@ -1,0 +1,56 @@
+{
+  "purpose": "First COMSOL/CST ranking check before deeper GA/BPSO/topology optimization.",
+  "platform": {
+    "core": "3 um Au / 3 um gap / 3 um Au CPS",
+    "au_thickness_um": 0.275,
+    "grid_um": 0.5,
+    "substrate": "sapphire",
+    "target_cutoff_thz": 0.8
+  },
+  "frequency_sweep_thz": [
+    0.05,
+    2.0
+  ],
+  "locked_template_requirement": "All four masks must use identical geometry extents, material properties, ports, boundaries, mesh rules, and frequency sweep.",
+  "must_extract": [
+    "S21_dB",
+    "S11_dB",
+    "loss_power = 1 - |S11|^2 - |S21|^2",
+    "f3dB",
+    "passband_ripple",
+    "stopband_average",
+    "recovery_peak",
+    "E_field_maps_0p4_0p8_1p2THz",
+    "Au_current_distribution_0p4_0p8_1p2THz"
+  ],
+  "entries": [
+    {
+      "name": "B0_straight_cps",
+      "mask_csv": "/Users/lukuan/Desktop/Quantum Engineering/AI_THZ/routeB_binary_ai_lpf/results/comsol_validation_queue/B0_straight_cps.csv",
+      "rationale": "Truth baseline: straight 3/3/3 CPS.",
+      "comsol_status": "pending",
+      "validation_question": "Does full-wave S21/S11 preserve the fast-model ranking?"
+    },
+    {
+      "name": "B1_traditional_stepped_bessel_cps",
+      "mask_csv": "/Users/lukuan/Desktop/Quantum Engineering/AI_THZ/routeB_binary_ai_lpf/results/comsol_validation_queue/B1_traditional_stepped_bessel_cps.csv",
+      "rationale": "Traditional analog baseline: hand-synthesized stepped-impedance/Bessel-like CPS on the same platform.",
+      "comsol_status": "pending",
+      "validation_question": "Does full-wave S21/S11 preserve the fast-model ranking?"
+    },
+    {
+      "name": "B2_7_stub_seed",
+      "mask_csv": "/Users/lukuan/Desktop/Quantum Engineering/AI_THZ/routeB_binary_ai_lpf/results/comsol_validation_queue/B2_7_stub_seed.csv",
+      "rationale": "Initial seed: f3dB near 0.8 THz in ABCD.",
+      "comsol_status": "pending",
+      "validation_question": "Does full-wave S21/S11 preserve the fast-model ranking?"
+    },
+    {
+      "name": "B3_11_stub_sweep_best",
+      "mask_csv": "/Users/lukuan/Desktop/Quantum Engineering/AI_THZ/routeB_binary_ai_lpf/results/comsol_validation_queue/B3_11_stub_sweep_best.csv",
+      "rationale": "Current best fast-model candidate: stronger stopband than 7-stub seed.",
+      "comsol_status": "pending",
+      "validation_question": "Does full-wave S21/S11 preserve the fast-model ranking?"
+    }
+  ]
+}

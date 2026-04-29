@@ -1,0 +1,10 @@
+{
+  "model": "main CPS line with cascaded weakly coupled open-stub shunt resonators",
+  "meaning": "This is an analog interpretation of the binary mask, not a replacement for full-wave validation.",
+  "stub_count": 0,
+  "stub_depth_um_min": 0.0,
+  "stub_depth_um_max": 0.0,
+  "quarter_wave_thz_min": 0.0,
+  "quarter_wave_thz_max": 0.0,
+  "stubs": []
+}

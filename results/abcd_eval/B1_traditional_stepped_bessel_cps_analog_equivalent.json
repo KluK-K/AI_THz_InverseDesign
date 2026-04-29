@@ -1,0 +1,51 @@
+{
+  "model": "main CPS line with cascaded weakly coupled open-stub shunt resonators",
+  "meaning": "This is an analog interpretation of the binary mask, not a replacement for full-wave validation.",
+  "stub_count": 5,
+  "stub_depth_um_min": 9.0,
+  "stub_depth_um_max": 18.5,
+  "quarter_wave_thz_min": 1.7553406956466655,
+  "quarter_wave_thz_max": 3.510681391293331,
+  "stubs": [
+    {
+      "index": 1,
+      "center_um": 55.25,
+      "width_um": 21.5,
+      "depth_um": 9.0,
+      "estimated_quarter_wave_thz": 3.510681391293331,
+      "role": "high-frequency suppression / matching stub"
+    },
+    {
+      "index": 2,
+      "center_um": 105.25,
+      "width_um": 16.5,
+      "depth_um": 14.0,
+      "estimated_quarter_wave_thz": 2.300101601192182,
+      "role": "high-frequency suppression / matching stub"
+    },
+    {
+      "index": 3,
+      "center_um": 150.25,
+      "width_um": 12.5,
+      "depth_um": 18.5,
+      "estimated_quarter_wave_thz": 1.7553406956466655,
+      "role": "high-frequency suppression / matching stub"
+    },
+    {
+      "index": 4,
+      "center_um": 195.25,
+      "width_um": 16.5,
+      "depth_um": 14.0,
+      "estimated_quarter_wave_thz": 2.300101601192182,
+      "role": "high-frequency suppression / matching stub"
+    },
+    {
+      "index": 5,
+      "center_um": 245.25,
+      "width_um": 21.5,
+      "depth_um": 9.0,
+      "estimated_quarter_wave_thz": 3.510681391293331,
+      "role": "high-frequency suppression / matching stub"
+    }
+  ]
+}

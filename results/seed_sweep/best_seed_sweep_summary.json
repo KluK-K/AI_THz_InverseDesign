@@ -1,0 +1,141 @@
+{
+  "row": {
+    "candidate": "SWEEP_0086",
+    "n_stubs": 11,
+    "depth_scale": 1.04,
+    "width_scale": 0.75,
+    "seed_offset": 1,
+    "fabrication_valid": true,
+    "f3db_thz": 0.7968952205289432,
+    "pass_avg_s21_db": -0.3149884080404625,
+    "pass_min_s21_db": -0.9815085525911366,
+    "pass_ripple_db": 0.8659124964864345,
+    "pass_avg_s11_db": -17.792243986791174,
+    "edge_avg_s21_db": -13.275119824999733,
+    "stop_avg_s21_db": -12.57762653570973,
+    "stop_max_s21_db": -1.316646843841206,
+    "monotonic_violation_db": 0.8950138224583883,
+    "score": -2.7533101777643605
+  },
+  "fabrication": {
+    "is_valid": true,
+    "gap_violations": 0,
+    "upper_rail_missing_cells": 0,
+    "lower_rail_missing_cells": 0,
+    "mirror_mismatch_cells": 0,
+    "disconnected_upper_loading_cells": 0,
+    "disconnected_lower_loading_cells": 0,
+    "min_feature_um": 0.5,
+    "notes": [
+      "all stage-2 fabrication checks passed"
+    ]
+  },
+  "analog": {
+    "model": "main CPS line with cascaded weakly coupled open-stub shunt resonators",
+    "meaning": "This is an analog interpretation of the binary mask, not a replacement for full-wave validation.",
+    "stub_count": 11,
+    "stub_depth_um_min": 27.5,
+    "stub_depth_um_max": 39.5,
+    "quarter_wave_thz_min": 0.8337868304321661,
+    "quarter_wave_thz_max": 1.191124043474523,
+    "stubs": [
+      {
+        "index": 1,
+        "center_um": 24.25,
+        "width_um": 2.5,
+        "depth_um": 27.5,
+        "estimated_quarter_wave_thz": 1.191124043474523,
+        "role": "high-frequency suppression / matching stub"
+      },
+      {
+        "index": 2,
+        "center_um": 49.25,
+        "width_um": 5.5,
+        "depth_um": 28.5,
+        "estimated_quarter_wave_thz": 1.150050800596091,
+        "role": "high-frequency suppression / matching stub"
+      },
+      {
+        "index": 3,
+        "center_um": 75.25,
+        "width_um": 2.5,
+        "depth_um": 29.5,
+        "estimated_quarter_wave_thz": 1.1117157739095547,
+        "role": "high-frequency suppression / matching stub"
+      },
+      {
+        "index": 4,
+        "center_um": 100.25,
+        "width_um": 6.5,
+        "depth_um": 31.0,
+        "estimated_quarter_wave_thz": 1.0587769275329093,
+        "role": "target-edge cutoff stub"
+      },
+      {
+        "index": 5,
+        "center_um": 124.25,
+        "width_um": 8.5,
+        "depth_um": 32.0,
+        "estimated_quarter_wave_thz": 1.026199175916512,
+        "role": "target-edge cutoff stub"
+      },
+      {
+        "index": 6,
+        "center_um": 149.25,
+        "width_um": 6.5,
+        "depth_um": 33.5,
+        "estimated_quarter_wave_thz": 0.9809256828613718,
+        "role": "target-edge cutoff stub"
+      },
+      {
+        "index": 7,
+        "center_um": 173.75,
+        "width_um": 8.5,
+        "depth_um": 34.5,
+        "estimated_quarter_wave_thz": 0.9528992347796184,
+        "role": "target-edge cutoff stub"
+      },
+      {
+        "index": 8,
+        "center_um": 200.75,
+        "width_um": 5.5,
+        "depth_um": 35.5,
+        "estimated_quarter_wave_thz": 0.9264298115912957,
+        "role": "target-edge cutoff stub"
+      },
+      {
+        "index": 9,
+        "center_um": 225.25,
+        "width_um": 4.5,
+        "depth_um": 37.0,
+        "estimated_quarter_wave_thz": 0.8893726191276439,
+        "role": "target-edge cutoff stub"
+      },
+      {
+        "index": 10,
+        "center_um": 251.25,
+        "width_um": 3.5,
+        "depth_um": 38.0,
+        "estimated_quarter_wave_thz": 0.866272031617835,
+        "role": "target-edge cutoff stub"
+      },
+      {
+        "index": 11,
+        "center_um": 276.75,
+        "width_um": 5.5,
+        "depth_um": 39.5,
+        "estimated_quarter_wave_thz": 0.8337868304321661,
+        "role": "target-edge cutoff stub"
+      }
+    ]
+  },
+  "geometry": {
+    "nx": 600,
+    "ny": 258,
+    "grid_um": 0.5,
+    "added_upper_cells": 2377,
+    "rail_cells": 7200,
+    "total_metal_cells": 11954,
+    "estimated_added_area_um2": 1188.5
+  }
+}

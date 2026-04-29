@@ -1,0 +1,67 @@
+{
+  "model": "main CPS line with cascaded weakly coupled open-stub shunt resonators",
+  "meaning": "This is an analog interpretation of the binary mask, not a replacement for full-wave validation.",
+  "stub_count": 7,
+  "stub_depth_um_min": 26.0,
+  "stub_depth_um_max": 38.0,
+  "quarter_wave_thz_min": 0.866272031617835,
+  "quarter_wave_thz_max": 1.2585461591428921,
+  "stubs": [
+    {
+      "index": 1,
+      "center_um": 23.75,
+      "width_um": 7.5,
+      "depth_um": 26.0,
+      "estimated_quarter_wave_thz": 1.2585461591428921,
+      "role": "high-frequency suppression / matching stub"
+    },
+    {
+      "index": 2,
+      "center_um": 66.25,
+      "width_um": 6.5,
+      "depth_um": 28.0,
+      "estimated_quarter_wave_thz": 1.1702271304311103,
+      "role": "high-frequency suppression / matching stub"
+    },
+    {
+      "index": 3,
+      "center_um": 108.25,
+      "width_um": 3.5,
+      "depth_um": 30.0,
+      "estimated_quarter_wave_thz": 1.0934909251569391,
+      "role": "high-frequency suppression / matching stub"
+    },
+    {
+      "index": 4,
+      "center_um": 150.75,
+      "width_um": 3.5,
+      "depth_um": 32.0,
+      "estimated_quarter_wave_thz": 1.026199175916512,
+      "role": "target-edge cutoff stub"
+    },
+    {
+      "index": 5,
+      "center_um": 191.25,
+      "width_um": 2.5,
+      "depth_um": 34.0,
+      "estimated_quarter_wave_thz": 0.9667093686170042,
+      "role": "target-edge cutoff stub"
+    },
+    {
+      "index": 6,
+      "center_um": 235.25,
+      "width_um": 2.5,
+      "depth_um": 36.0,
+      "estimated_quarter_wave_thz": 0.9137389922544286,
+      "role": "target-edge cutoff stub"
+    },
+    {
+      "index": 7,
+      "center_um": 276.25,
+      "width_um": 3.5,
+      "depth_um": 38.0,
+      "estimated_quarter_wave_thz": 0.866272031617835,
+      "role": "target-edge cutoff stub"
+    }
+  ]
+}

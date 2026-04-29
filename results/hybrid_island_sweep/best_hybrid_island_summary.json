@@ -1,0 +1,23 @@
+{
+  "candidate": "HYB_0052",
+  "stride": 4,
+  "length_um": 3.0,
+  "height_um": 1.0,
+  "y_factor": 0.62,
+  "island_count": 3,
+  "fabrication_valid": true,
+  "f3db_thz": 0.818457069481156,
+  "pass_avg_s21_db": -0.2575792646434009,
+  "pass_min_s21_db": -0.6238995852722,
+  "pass_ripple_db": 0.5174505018443298,
+  "pass_avg_s11_db": -18.541139786637483,
+  "edge_avg_s21_db": -20.01571721880008,
+  "stop_avg_s21_db": -7.499889166816994,
+  "stop_max_s21_db": -0.32920213722471997,
+  "stop_coverage_below_10_db": 0.2727272727272727,
+  "stop_coverage_below_20_db": 0.2,
+  "recovery_peak_db": -0.32920213722471997,
+  "passband_notch_penalty_db": 0.0,
+  "monotonic_violation_db": 57.26504390058392,
+  "score": -28.069776368351878
+}

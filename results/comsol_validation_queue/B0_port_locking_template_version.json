@@ -1,0 +1,21 @@
+{
+  "generated_at_local": "2026-04-28T17:53:39",
+  "purpose": "Port locking template/version record before B0 visual selection inspection.",
+  "files": [
+    {
+      "path": "comsol_bridge/build_locked_template_from_rectangles.m",
+      "sha256": "a3d788ecd69f1d9ad663eeccff5b31c90de69e0261877d751195b26b130229c7",
+      "bytes": 7827
+    },
+    {
+      "path": "comsol_bridge/PORT_LOCKING_RECORD.md",
+      "sha256": "dbf6400a74e2ca55b4c10cc7d0d9afa801b071d2b9d187e63185c20540567f2e",
+      "bytes": 2317
+    },
+    {
+      "path": "results/comsol_validation_queue/B0_PORT_MINITEST_MANIFEST.json",
+      "sha256": "c9ab704d7001ae6d9e388855c999f1337ed6b3ed62280ef5f188384282069454",
+      "bytes": 959
+    }
+  ]
+}

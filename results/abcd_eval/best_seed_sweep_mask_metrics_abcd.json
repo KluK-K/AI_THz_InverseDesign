@@ -1,0 +1,26 @@
+{
+  "label": "best_seed_sweep_mask",
+  "model": "stage2_abcd_qtem_open_stub",
+  "meaning": "Fast surrogate for ranking binary CPS low-pass candidates before COMSOL.",
+  "metrics": {
+    "f3db_thz": 0.7861282046245072,
+    "pass_avg_s21_db": -0.3183993677355843,
+    "pass_min_s21_db": -0.9815085525911366,
+    "pass_ripple_db": 0.8668369584846739,
+    "pass_avg_s11_db": -17.834232608563823,
+    "edge_avg_s21_db": -13.183882714804904,
+    "stop_avg_s21_db": -12.684107982080455,
+    "stop_max_s21_db": -1.3143079263223634,
+    "monotonic_violation_db": 1.2916122458127723,
+    "score": -3.3956727580329824
+  },
+  "geometry_summary": {
+    "nx": 600,
+    "ny": 258,
+    "grid_um": 0.5,
+    "added_upper_cells": 2377,
+    "rail_cells": 7200,
+    "total_metal_cells": 11954,
+    "estimated_added_area_um2": 1188.5
+  }
+}

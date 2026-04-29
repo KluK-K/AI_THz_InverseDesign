@@ -1,0 +1,16 @@
+{
+  "candidate": "B3_11_stub_sweep_best",
+  "mask_csv": "/Users/lukuan/Desktop/Quantum Engineering/AI_THZ/routeB_binary_ai_lpf/results/comsol_validation_queue/B3_11_stub_sweep_best.csv",
+  "rectangles_csv": "/Users/lukuan/Desktop/Quantum Engineering/AI_THZ/routeB_binary_ai_lpf/results/comsol_rectangles/B3_11_stub_sweep_best_rectangles.csv",
+  "feed_rectangles": 4,
+  "design_rectangles": 71,
+  "total_rectangles": 75,
+  "geometry_um": {
+    "total_length": 820.0,
+    "total_width": 129.0,
+    "au_thickness": 0.275,
+    "grid": 0.5,
+    "design_x0": 260.0,
+    "design_x1": 560.0
+  }
+}
